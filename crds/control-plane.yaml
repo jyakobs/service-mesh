@@ -1,0 +1,25 @@
+kind: ServiceMeshControlPlane
+apiVersion: maistra.io/v2
+metadata:
+  name: basic
+  namespace: istio-system-travel-agency
+spec:
+  version: v2.1
+  tracing:
+    type: Jaeger
+    sampling: 10000
+  policy:
+    type: Istiod
+  telemetry:
+    type: Istiod
+  addons:
+    jaeger:
+      install:
+        storage:
+          type: Memory
+    prometheus:
+      enabled: true
+    kiali:
+      enabled: true
+    grafana:
+      enabled: true
