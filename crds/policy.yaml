@@ -1,0 +1,14 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: deny-method-post
+  namespace: quick-start-test
+spec:
+  selector:
+    matchLabels:
+      app: quick-start
+  action: DENY
+  rules:
+  - to:
+    - operation:
+        methods: ["POST"]

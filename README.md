@@ -14,3 +14,9 @@ oc label namespace travel-agency istio-injection=enabled
 oc label namespace travel-portal istio-injection=enabled
 Non abilita l'auto injection... cioè lo fa a livello di namespace ma non a livello di deployment
 
+Soluzione
+oc project $1
+for dp in `oc get deployment -o name`; do
+    echo "deployment: $dp"
+    oc patch $dp -p '{"spec": {"template":{"metadata":{"annotations":{"sidecar.istio.io/inject":"true"}}}} }'
+done
