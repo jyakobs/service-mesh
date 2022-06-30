@@ -1,0 +1,13 @@
+kind: DestinationRule
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: control
+  namespace: travel-control
+  labels:
+    kiali_wizard: request_routing
+spec:
+  host: control.travel-control.svc.cluster.local
+  subsets:
+    - labels:
+        version: v1
+      name: v1

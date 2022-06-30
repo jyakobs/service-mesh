@@ -20,3 +20,6 @@ for dp in `oc get deployment -o name`; do
     echo "deployment: $dp"
     oc patch $dp -p '{"spec": {"template":{"metadata":{"annotations":{"sidecar.istio.io/inject":"true"}}}} }'
 done
+
+
+Pre

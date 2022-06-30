@@ -13,4 +13,7 @@ oc project $1
 for dp in `oc get deployment -o name`; do
     echo "deployment: $dp"
     oc patch $dp -p '{"spec": {"template":{"metadata":{"annotations":{"sidecar.istio.io/inject":"true"}}}} }'
+    
 done
+
+oc rollout restart deploy -n $1

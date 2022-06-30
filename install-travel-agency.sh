@@ -23,9 +23,14 @@ oc apply -f <(curl -L https://raw.githubusercontent.com/kiali/demos/master/trave
 
 #create istio control plane
 
-oc apply -f crds/control-plane.yaml
-oc apply -f crds/members.yaml
+oc apply -f crds/travel-agency/control-plane.yaml
+oc apply -f crds/travel-agency/members.yaml
+
+
 
 
 ./enable-sidecars.sh travel-control
 
+./enable-sidecars.sh travel-agency
+
+./enable-sidecars.sh travel-portal

@@ -1,0 +1,56 @@
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: control-gateway
+  namespace: travel-control
+  labels:
+    kiali_wizard: request_routing
+spec:
+  servers:
+    - hosts:
+        - >-
+          istio-ingressgateway-istio-system-travel-agency.apps.cluster-8475r.8475r.sandbox1572.opentlc.com
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+
+---
+
+kind: DestinationRule
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: control
+  namespace: travel-control
+  labels:
+    kiali_wizard: request_routing
+spec:
+  host: control.travel-control.svc.cluster.local
+  subsets:
+    - labels:
+        version: v1
+      name: v1
+
+--- 
+
+kind: VirtualService
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: control
+  namespace: travel-control
+  labels:
+    kiali_wizard: request_routing
+spec:
+  hosts:
+    - >-
+      istio-ingressgateway-istio-system-travel-agency.apps.cluster-8475r.8475r.sandbox1572.opentlc.com
+  gateways:
+    - travel-control/control-gateway
+  http:
+    - route:
+        - destination:
+            host: control.travel-control.svc.cluster.local
+            subset: v1
+          weight: 100
