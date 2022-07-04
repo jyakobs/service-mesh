@@ -2,7 +2,7 @@ kind: ServiceMeshControlPlane
 apiVersion: maistra.io/v2
 metadata:
   name: basic
-  namespace: istio-system-travel-agency
+  namespace: istio-system
 spec:
   version: v2.1
   tracing:

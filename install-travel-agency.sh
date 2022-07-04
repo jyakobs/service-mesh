@@ -14,19 +14,23 @@ oc create namespace travel-agency
 oc create namespace travel-portal
 oc create namespace travel-control
 
-oc create namespace istio-system-travel-agency
+oc create namespace istio-system
 
 oc apply -f <(curl -L https://raw.githubusercontent.com/kiali/demos/master/travels/travel_agency.yaml) -n travel-agency
 oc apply -f <(curl -L https://raw.githubusercontent.com/kiali/demos/master/travels/travel_portal.yaml) -n travel-portal
 oc apply -f <(curl -L https://raw.githubusercontent.com/kiali/demos/master/travels/travel_control.yaml) -n travel-control
 
 
+#also install new versions of the services
+oc apply -f <(curl -L https://raw.githubusercontent.com/kiali/demos/master/travels/travels-v2.yaml) -n travel-agency
+oc apply -f <(curl -L https://raw.githubusercontent.com/kiali/demos/master/travels/travels-v3.yaml) -n travel-agency
+
 #create istio control plane
 
 oc apply -f crds/travel-agency/control-plane.yaml
 oc apply -f crds/travel-agency/members.yaml
 
-
+sleep 30
 
 
 ./enable-sidecars.sh travel-control

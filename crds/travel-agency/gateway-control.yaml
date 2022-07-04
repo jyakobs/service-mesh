@@ -9,7 +9,7 @@ spec:
   servers:
     - hosts:
         - >-
-          istio-ingressgateway-istio-system-travel-agency.apps.cluster-8475r.8475r.sandbox1572.opentlc.com
+          istio-ingressgateway-istio-system.apps.cluster-8475r.8475r.sandbox1572.opentlc.com
       port:
         name: http
         number: 80

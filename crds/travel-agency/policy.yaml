@@ -1,0 +1,16 @@
+kind: AuthorizationPolicy
+apiVersion: security.istio.io/v1beta1
+metadata:
+  name: deny-all
+  namespace: travel-agency
+spec:
+  selector:
+    matchLabels:
+      app: travels
+  rules:
+    - to:
+        - operation:
+            methods:
+              - POST
+              - GET
+  action: DENY
