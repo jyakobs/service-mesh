@@ -29,12 +29,3 @@ oc apply -f <(curl -L https://raw.githubusercontent.com/kiali/demos/master/trave
 
 oc apply -f crds/travel-agency/control-plane.yaml
 oc apply -f crds/travel-agency/members.yaml
-
-sleep 30
-
-
-./enable-sidecars.sh travel-control
-
-./enable-sidecars.sh travel-agency
-
-./enable-sidecars.sh travel-portal
