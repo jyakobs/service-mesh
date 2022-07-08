@@ -1,0 +1,14 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: deny-get-travel-portal
+  namespace: travel-agency
+spec:
+  selector:
+    matchLabels:
+      app: travels
+  action: DENY
+  rules:
+  - to:
+    - operation:
+        methods: ["GET"]

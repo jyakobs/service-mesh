@@ -1,0 +1,15 @@
+kind: DestinationRule
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  namespace: travel-agency
+  name: hotels
+  labels:
+    kiali_wizard: fault_injection
+  annotations: ~
+spec:
+  host: hotels.travel-agency.svc.cluster.local
+  subsets:
+    - name: v1
+      labels:
+        version: v1
+  trafficPolicy: ~

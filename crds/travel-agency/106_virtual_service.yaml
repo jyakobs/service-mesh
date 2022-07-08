@@ -1,0 +1,22 @@
+kind: VirtualService
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  namespace: travel-agency
+  name: hotels
+  labels:
+    kiali_wizard: fault_injection
+spec:
+  http:
+    - route:
+        - destination:
+            host: hotels.travel-agency.svc.cluster.local
+            subset: v1
+          weight: 100
+      fault:
+        delay:
+          percentage:
+            value: 100
+          fixedDelay: 5s
+  hosts:
+    - hotels.travel-agency.svc.cluster.local
+  gateways: ~

@@ -1,0 +1,21 @@
+kind: DestinationRule
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  namespace: travel-agency
+  name: travels
+  labels:
+    kiali_wizard: request_routing
+  annotations: ~
+spec:
+  host: travels.travel-agency.svc.cluster.local
+  subsets:
+    - name: v1
+      labels:
+        version: v1
+    - name: v2
+      labels:
+        version: v2
+    - name: v3
+      labels:
+        version: v3
+  trafficPolicy: ~

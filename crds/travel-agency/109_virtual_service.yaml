@@ -1,0 +1,25 @@
+kind: VirtualService
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  namespace: travel-agency
+  name: travels
+  labels:
+    kiali_wizard: traffic_shifting
+spec:
+  http:
+    - route:
+        - destination:
+            host: travels.travel-agency.svc.cluster.local
+            subset: v1
+          weight: 33
+        - destination:
+            host: travels.travel-agency.svc.cluster.local
+            subset: v2
+          weight: 33
+        - destination:
+            host: travels.travel-agency.svc.cluster.local
+            subset: v3
+          weight: 34
+  hosts:
+    - travels.travel-agency.svc.cluster.local
+  gateways: ~
