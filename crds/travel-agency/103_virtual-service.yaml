@@ -8,7 +8,7 @@ metadata:
 spec:
   hosts:
     - >-
-      istio-ingressgateway-istio-system.apps.cluster-e16a.gcp.redhatworkshops.io
+      istio-ingressgateway-istio-system.apps.cluster-nrzcl.nrzcl.sandbox511.opentlc.com
   gateways:
     - travel-control/control-gateway
   http:

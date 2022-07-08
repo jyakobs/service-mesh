@@ -1,0 +1,14 @@
+kind: DestinationRule
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: quick-start-service
+  namespace: quick-start-test
+  labels:
+    kiali_wizard: request_routing
+spec:
+  host: quick-start-service.quick-start-test.svc.cluster.local
+  subsets:
+    - name: v1
+      labels:
+        version: v1
+status: {}

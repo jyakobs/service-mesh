@@ -1,0 +1,19 @@
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: quick-start-service-gateway
+  namespace: quick-start-test
+  labels:
+    kiali_wizard: request_routing
+spec:
+  servers:
+    - port:
+        number: 80
+        protocol: HTTP
+        name: http
+      hosts:
+        - >-
+          quick-start-service-quick-start-test.apps.cluster-nrzcl.nrzcl.sandbox511.opentlc.com
+  selector:
+    istio: ingressgateway
+status: {}

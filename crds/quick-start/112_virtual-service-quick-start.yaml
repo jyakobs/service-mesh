@@ -1,0 +1,20 @@
+kind: VirtualService
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: quick-start-service
+  namespace: quick-start-test
+  labels:
+    kiali_wizard: request_routing
+spec:
+  hosts:
+    - >-
+      quick-start-service-quick-start-test.apps.cluster-nrzcl.nrzcl.sandbox511.opentlc.com
+  gateways:
+    - quick-start-test/quick-start-service-gateway
+  http:
+    - route:
+        - destination:
+            host: quick-start-service.quick-start-test.svc.cluster.local
+            subset: v1
+          weight: 100
+status: {}
