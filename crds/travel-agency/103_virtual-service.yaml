@@ -8,7 +8,7 @@ metadata:
 spec:
   hosts:
     - >-
-      istio-ingressgateway-istio-system.apps.cluster-nrzcl.nrzcl.sandbox511.opentlc.com
+      istio-ingressgateway-istio-system.apps.cluster-xm7q5.xm7q5.sandbox1911.opentlc.com
   gateways:
     - travel-control/control-gateway
   http:
